@@ -27,6 +27,7 @@ def choice_one():
         for file in files:
             if file.endswith(extension):
                 print(os.path.join(root,file))
+
 def choice_two():
     try:
         size = int(input("Min size in bytes (e.g. 1000000 for 1MB): "))
@@ -43,16 +44,35 @@ def choice_two():
     except ValueError:
         print("Error enter a number")
 
-
 def choice_three():
     name = input("Enter a name of the file | folder: ")
     print(f"Filtering by name containing '{name}'...")
+    for root,dirs,files in os.walk("C:\\"):
+        for item in files + dirs:
+            if name in item:
+                print(os.path.join(root,item))
 
 def choice_four():
     print("Showing all files in C:\\ ...")
-
+    for root,dirs,files in os.walk("C:\\"):
+        for name in files + dirs:
+                print(os.path.join(root,name))
 def choice_five():
     print("Exiting...")
+
+if User_choice == 1:
+    choice_one()
+elif User_choice == 2:
+    choice_two()
+elif User_choice == 3:
+    choice_three()
+elif User_choice == 4:
+    choice_four()
+elif User_choice == 5:
+    choice_five()
+else:
+    print("Invalid choice!")
+
 
 
 
